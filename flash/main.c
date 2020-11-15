@@ -12,11 +12,11 @@ int main(void)
 
 	initialize_log();
 
-	write_line_to_log("Starting...");
-	write_line_to_log("Log sub-system initialized.");
+	LOG_INFO("Starting...");
+	LOG_INFO("Log sub-system initialized.");
 
 	initialize_blinking();
-	write_line_to_log("Blinking sub-system initialized.");
+	LOG_INFO("Blinking sub-system initialized.");
 
 	while (1) {
 
