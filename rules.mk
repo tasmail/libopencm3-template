@@ -101,7 +101,7 @@ LDLIBS += -Wl,--start-group -lc -lgcc -lnosys -Wl,--end-group
 
 # Burn in legacy hell fortran modula pascal yacc idontevenwat
 .SUFFIXES:
-.SUFFIXES: .c .S .h .o .cxx .elf .bin .list .lss
+.SUFFIXES: .c .S .h .o .cxx .elf .bin .list .lss .hex
 
 # Bad make, never *ever* try to get a file out of source control by yourself.
 %: %,v
@@ -110,7 +110,7 @@ LDLIBS += -Wl,--start-group -lc -lgcc -lnosys -Wl,--end-group
 %: s.%
 %: SCCS/s.%
 
-all: $(PROJECT).elf $(PROJECT).bin
+all: $(PROJECT).elf $(PROJECT).bin $(PROJECT).hex
 flash: $(PROJECT).flash
 
 # error if not using linker script generator
@@ -147,6 +147,10 @@ $(PROJECT).elf: $(OBJS) $(LDSCRIPT) $(LIBDEPS)
 %.bin: %.elf
 	@printf "  OBJCOPY\t$@\n"
 	$(Q)$(OBJCOPY) -O binary  $< $@
+
+%.hex: %.elf
+	@printf "  OBJCOPY\t$@\n"
+	$(Q)$(OBJCOPY) -O ihex  $< $@
 
 %.lss: %.elf
 	$(OBJDUMP) -h -S $< > $@
