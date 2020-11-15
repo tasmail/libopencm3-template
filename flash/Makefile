@@ -28,9 +28,10 @@ PROJECT = usb-flash
 BUILD_DIR = bin
 
 SHARED_DIR = ../logging
-# SHARED_DIR += ../logging
+SHARED_DIR += ../blinking
 CFILES = main.c
 CFILES += logging.c
+CFILES += blinking.c
 
 DEVICE = stm32f401cc
 
