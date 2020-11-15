@@ -27,17 +27,12 @@
 PROJECT = usb-flash
 BUILD_DIR = bin
 
-SHARED_DIR = ../
+SHARED_DIR = ../logging
+# SHARED_DIR += ../logging
 CFILES = main.c
+CFILES += logging.c
 
 DEVICE = stm32f401cc
-# LDSCRIPT = stm32f401.ld
-
-# OPENCM3_LIB = opencm3_stm32f4
-# OPENCM3_DEFS += -DSTM32F4
-
-# FP_FLAGS ?= -mfloat-abi=hard -mfpu=fpv4-sp-d16
-# ARCH_FLAGS = -mthumb -mcpu=cortex-m4 $(FP_FLAGS)
 
 VPATH += $(SHARED_DIR)
 INCLUDES += $(patsubst %,-I%, . $(SHARED_DIR))
