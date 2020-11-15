@@ -29,9 +29,13 @@ BUILD_DIR = bin
 
 SHARED_DIR = ../logging
 SHARED_DIR += ../blinking
+SHARED_DIR += ../usb-device
+SHARED_DIR += ../ramdisk
 CFILES = main.c
 CFILES += logging.c
 CFILES += blinking.c
+CFILES += usb-device.c
+CFILES += ramdisk.c
 
 DEVICE = stm32f401cc
 
